@@ -1,8 +1,8 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import kittens from './kittens';
 
 const rootReducer = combineReducers({
-  kittens
+    kittens
 });
 
 export default rootReducer;
