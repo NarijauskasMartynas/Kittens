@@ -1,6 +1,6 @@
-#Kittens App
+# Kittens App
 
-#Usage guide:
+# Usage guide:
 
 1. Clone repository
 2. In console cd to /MediaParkProject
