@@ -7,7 +7,7 @@
   export default function reducer(state = initialState, action) {
   switch (action.type) {
       case 'SUCCESS':{
-       var kitten = {name: action.name, image: action.image}
+       var kitten = {name: action.name, image: action.image, description: action.description}
         return{
           ...state,
           isLoading: false,

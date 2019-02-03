@@ -5,12 +5,20 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import KittenList from './KittensListView/KittenList'
 import KittenInfo from './KittenInfoView/KittenInfo'
 
+import configureStore from '../store/index.js';
+
+import { Provider } from 'react-redux';
+
+
 
 export default class KittensApp extends React.Component {
 
+  
   render() {
     return (
+      <Provider store={store}>      
       <Navigator />
+      </Provider>
     );
   }
 }
@@ -24,7 +32,9 @@ const AppStackNavigator = createStackNavigator({
   }
 });
 
+
 const Navigator = createAppContainer(AppStackNavigator);
+
 
 const styles = StyleSheet.create({
   container: {
