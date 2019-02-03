@@ -44,7 +44,7 @@ class KittenList extends Component {
     }
 
     handleFilterClick(imagesAmount) {
-        if (this.state.connectionInfo == 'wifi') {
+        if (this.state.connectionInfo == 'none') {
             AsyncStorage.getItem('@kittens').then((value) => {
                 if (value && value.length) {
                     let kittens = JSON.parse(value);
@@ -67,8 +67,6 @@ class KittenList extends Component {
                 this.props.getImages(namesArray[Math.floor(Math.random() * namesArray.length)] + ' the cat', description);
             }
         }
-        console.log(this.props.kittens);
-
     }
 
     renderItem = ({ item }) => {
