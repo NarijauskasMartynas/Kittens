@@ -1,35 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import KittenList from './src/components/KittensListView/KittenList'
-import KittenInfo from './src/components/KittenInfoView/KittenInfo'
+import KittensApp from './src/components//KittensApp';
+import store from './src/store/index.js';
+import { Provider } from 'react-redux';
 
+import configureStore from './src/store/index.js';
 
 export default class App extends React.Component {
   render() {
     return (
-      <Navigator/>
+      <Provider store={store}>
+        <KittensApp />
+      </Provider>
     );
   }
 }
 
-const AppStackNavigator = createStackNavigator({
-  Home:{
-    screen: KittenList
-  },
-  Profile:{
-    screen: KittenInfo
-  }
-});
-
-const Navigator = createAppContainer(AppStackNavigator);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

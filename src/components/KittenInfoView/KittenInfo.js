@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 
 const kittenInfo = props => {
   return (
-      <Text> Test </Text>
+    <Text> Test </Text>
   )
 }
 export default kittenInfo;
