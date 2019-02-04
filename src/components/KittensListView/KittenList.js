@@ -105,10 +105,13 @@ class KittenList extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', height: 50 }}>
-                    <Button title='20' onPress={() => this.handleFilterClick(20)} />
-                    <Button title='50' onPress={() => this.handleFilterClick(50)} />
-                    <Button title='100' onPress={() => this.handleFilterClick(100)} />
+                <View style={{
+                    borderWidth: 1, backgroundColor: 'black', flexDirection: 'row',
+                    justifyContent: 'space-around', height: 50, width: '100%', allignItems: 'center'
+                }}>
+                    <Button title='20' color='white' onPress={() => this.handleFilterClick(20)} />
+                    <Button title='50' color='white' onPress={() => this.handleFilterClick(50)} />
+                    <Button title='100' color='white' onPress={() => this.handleFilterClick(100)} />
                 </View>
                 {this.renderImages()}
             </View>
