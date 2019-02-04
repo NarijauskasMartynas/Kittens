@@ -7,11 +7,9 @@ class KittenList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false,
             kittens: [],
             kittensBackup: [],
             imagesAmount: 0,
-            hasStarted: false,
             connectionInfo: ''
         }
 
@@ -50,19 +48,17 @@ class KittenList extends Component {
                     let kittens = JSON.parse(value);
                     this.props.loadFromStorage(kittens);
                 }
-                })
+            })
             alert('No internet!');
             return;
         }
         //bonus task allow user to specify count of items to retrieve
         this.setState({
             imagesAmount: imagesAmount,
-            isLoading: true,
-            hasStarted: true
         })
         if (this.props.kittens && this.props.kittens.length <= imagesAmount) {
-            console.log('pateko');
             var needToGet = imagesAmount - this.props.kittens.length;
+            (imagesAmount)
             for (var i = 0; i < needToGet; i++) {
                 this.props.getImages(namesArray[Math.floor(Math.random() * namesArray.length)] + ' the cat', description);
             }
@@ -72,20 +68,20 @@ class KittenList extends Component {
     renderItem = ({ item }) => {
         const uris = 'data:image/png;base64,' + item.image;
         return (
-            <TouchableOpacity style={{ borderWidth: 1, flex: 1, flexDirection: 'column', justifyContent: 'center' }}
+            <TouchableOpacity style={{ backgroundColor: 'black', flex: 1, flexDirection: 'column', justifyContent: 'center', marginBottom: 5 }}
                 onPress={() => this.props.navigation.navigate('Profile', { kitten: item })}>
                 <Image style={{ width: 300, height: 200, margin: 5 }}
                     source={{ uri: uris }}
                 />
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>{item.name}</Text>
+                    <Text style={{ color: 'white' }}>{item.name}</Text>
                 </View>
             </TouchableOpacity>
         )
     }
 
     renderImages() {
-        if (this.props.isLoading && this.state.hasStarted) {
+        if (this.props.kittens.length < this.state.imagesAmount) {
             return (
                 <View style={styles.container}>
                     <ActivityIndicator />
@@ -93,6 +89,8 @@ class KittenList extends Component {
             )
         }
         else {
+            var stringifiedArray = JSON.stringify(this.props.kittens);
+            AsyncStorage.setItem('@kittens', stringifiedArray);
             return (
                 <FlatList
                     data={this.props.kittens.slice(0, this.state.imagesAmount)}
@@ -130,7 +128,6 @@ const styles = StyleSheet.create({
 function mapStateToProps(state) {
     return {
         kittens: state.kittens.kittens,
-        isLoading: state.kittens.isLoading,
     }
 }
 

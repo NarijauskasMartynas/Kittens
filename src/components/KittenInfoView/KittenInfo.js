@@ -20,8 +20,8 @@ class KittenInfo extends Component {
             <View>
                 <Image style={{ width: '100%', height: 300, marginBottom: 5 }}
                     source={{ uri: uris }} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}> {kitten.name} </Text>
-                <Text> {kitten.description} </Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', margin: 5 }}> {kitten.name} </Text>
+                <Text style={{margin: 5}}> {kitten.description} </Text>
             </View>
         )
     }
